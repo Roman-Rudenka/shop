@@ -523,3 +523,10 @@ C:\Personal files\Projects\vs code\Shop\bin\Debug\net9.0\zh-Hans\Microsoft.Visua
 C:\Personal files\Projects\vs code\Shop\bin\Debug\net9.0\zh-Hant\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 C:\Personal files\Projects\vs code\Shop\bin\Debug\net9.0\zh-Hant\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
 C:\Personal files\Projects\vs code\Shop\bin\Debug\net9.0\zh-Hant\Microsoft.VisualStudio.TestPlatform.Common.resources.dll
+C:\Personal files\Projects\vs code\Shop\obj\Debug\net9.0\Shop.sourcelink.json
+C:\Personal files\Projects\vs code\Shop\bin\Debug\net9.0\MediatR.dll
+C:\Personal files\Projects\vs code\Shop\bin\Debug\net9.0\MediatR.Contracts.dll
+C:\Personal files\Projects\vs code\Shop\bin\Debug\net9.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Personal files\Projects\vs code\Shop\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Personal files\Projects\vs code\Shop\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Personal files\Projects\vs code\Shop\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll

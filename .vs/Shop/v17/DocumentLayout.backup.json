@@ -3,6 +3,18 @@
   "WorkspaceRootPath": "C:\\Personal files\\Projects\\vs code\\Shop\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{BBE18743-24F6-57B3-F939-D331F20BE72E}|Shop.csproj|c:\\personal files\\projects\\vs code\\shop\\tests\\unit\\usertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBE18743-24F6-57B3-F939-D331F20BE72E}|Shop.csproj|solutionrelative:tests\\unit\\usertests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBE18743-24F6-57B3-F939-D331F20BE72E}|Shop.csproj|c:\\personal files\\projects\\vs code\\shop\\tests\\unit\\producttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBE18743-24F6-57B3-F939-D331F20BE72E}|Shop.csproj|solutionrelative:tests\\unit\\producttests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBE18743-24F6-57B3-F939-D331F20BE72E}|Shop.csproj|c:\\personal files\\projects\\vs code\\shop\\tests\\unit\\emailtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBE18743-24F6-57B3-F939-D331F20BE72E}|Shop.csproj|solutionrelative:tests\\unit\\emailtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{BBE18743-24F6-57B3-F939-D331F20BE72E}|Shop.csproj|c:\\personal files\\projects\\vs code\\shop\\tests\\integration\\emailintegration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BBE18743-24F6-57B3-F939-D331F20BE72E}|Shop.csproj|solutionrelative:tests\\integration\\emailintegration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -22,28 +34,67 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserTests.cs",
+              "DocumentMoniker": "C:\\Personal files\\Projects\\vs code\\Shop\\Tests\\Unit\\UserTests.cs",
+              "RelativeDocumentMoniker": "Tests\\Unit\\UserTests.cs",
+              "ToolTip": "C:\\Personal files\\Projects\\vs code\\Shop\\Tests\\Unit\\UserTests.cs*",
+              "RelativeToolTip": "Tests\\Unit\\UserTests.cs*",
+              "ViewState": "AgIAAEsAAAAAAAAAAADwv3AAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T11:17:58.041Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ProductTests.cs",
+              "DocumentMoniker": "C:\\Personal files\\Projects\\vs code\\Shop\\Tests\\Unit\\ProductTests.cs",
+              "RelativeDocumentMoniker": "Tests\\Unit\\ProductTests.cs",
+              "ToolTip": "C:\\Personal files\\Projects\\vs code\\Shop\\Tests\\Unit\\ProductTests.cs*",
+              "RelativeToolTip": "Tests\\Unit\\ProductTests.cs*",
+              "ViewState": "AgIAAFEAAAAAAAAAAAAQwFYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T11:17:48.172Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "EmailTests.cs",
+              "DocumentMoniker": "C:\\Personal files\\Projects\\vs code\\Shop\\Tests\\Unit\\EmailTests.cs",
+              "RelativeDocumentMoniker": "Tests\\Unit\\EmailTests.cs",
+              "ToolTip": "C:\\Personal files\\Projects\\vs code\\Shop\\Tests\\Unit\\EmailTests.cs",
+              "RelativeToolTip": "Tests\\Unit\\EmailTests.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAswFYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-16T11:17:38.631Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "EmailIntegration.cs",
               "DocumentMoniker": "C:\\Personal files\\Projects\\vs code\\Shop\\Tests\\Integration\\EmailIntegration.cs",
               "RelativeDocumentMoniker": "Tests\\Integration\\EmailIntegration.cs",
               "ToolTip": "C:\\Personal files\\Projects\\vs code\\Shop\\Tests\\Integration\\EmailIntegration.cs",
               "RelativeToolTip": "Tests\\Integration\\EmailIntegration.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowBMAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-09T10:01:11.956Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 5,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Personal files\\Projects\\vs code\\Shop\\API\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\AccountController.cs",
@@ -51,12 +102,11 @@
               "RelativeToolTip": "API\\Controllers\\AccountController.cs",
               "ViewState": "AgIAAGoAAAAAAAAAAAASwH4AAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T09:14:55.305Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T09:14:55.305Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Personal files\\Projects\\vs code\\Shop\\API\\Program.cs",
               "RelativeDocumentMoniker": "API\\Program.cs",
@@ -64,8 +114,7 @@
               "RelativeToolTip": "API\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-09T09:14:08.517Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-09T09:14:08.517Z"
             }
           ]
         }

@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
-using Shop.Core.Entities;
+using Shop.Core.Domain.Entities;
 
 namespace Shop.Infrastructure.Data
 {

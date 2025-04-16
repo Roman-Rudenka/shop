@@ -1,6 +1,6 @@
 using System.Text;
 using System.Security.Cryptography;
-using Shop.Core.Interfaces;
+using Shop.Core.Domain.Interfaces;
 
 namespace Shop.Infrastructure.Services
 {

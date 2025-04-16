@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Shop.Core.Entities;
+using Shop.Core.Domain.Entities;
 
 namespace Shop.Infrastructure.Data.Configurations
 {
@@ -32,7 +32,8 @@ namespace Shop.Infrastructure.Data.Configurations
             builder.HasOne(p => p.Publisher)
                 .WithMany()
                 .HasForeignKey(p => p.PublisherId)
-                .OnDelete(DeleteBehavior.Cascade);
+                .OnDelete(DeleteBehavior.Cascade)
+                .IsRequired();
 
             builder.ToTable("Products");
         }

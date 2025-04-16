@@ -1,4 +1,4 @@
-using Shop.Core.Entities;
+using Shop.Core.Domain.Entities;
 
 namespace Shop.API.DTO
 {

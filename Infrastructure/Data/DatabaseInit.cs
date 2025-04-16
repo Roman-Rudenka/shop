@@ -1,6 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
-using Shop.Core.Entities;
-using Shop.Core.Interfaces;
+using Shop.Core.Domain.Entities;
+using Shop.Core.Domain.Interfaces;
 using System;
 using System.Linq;
 using System.Threading.Tasks;

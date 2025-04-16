@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shop.Core.Entities;
-using Shop.Core.UseCases.Commands;
-using Shop.Core.UseCases.Queries;
+using MediatR;
+using Shop.Core.Application.Commands.Users;
+using Shop.Core.Application.Queries.Users;
+using Shop.Core.Domain.Entities;
 using Shop.API.DTO;
-using Shop.Core.Interfaces;
+
 
 namespace Shop.API.Controllers
 {
@@ -12,41 +13,40 @@ namespace Shop.API.Controllers
     [Route("api/users")]
     public class UsersController : ControllerBase
     {
-        private readonly UserCommands _userCommands;
-        private readonly UserQueries _userQueries;
-        private readonly IProductRepository _productRepository;
-        public UsersController(UserCommands userCommands, UserQueries userQueries, IProductRepository productRepository)
+        private readonly IMediator _mediator;
+
+        public UsersController(IMediator mediator)
         {
-            _userCommands = userCommands ?? throw new ArgumentNullException(nameof(userCommands));
-            _userQueries = userQueries ?? throw new ArgumentNullException(nameof(userQueries));
-            _productRepository = productRepository;
+            _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterUserRequest request)
         {
             if (string.IsNullOrEmpty(request.Name) || string.IsNullOrEmpty(request.Email) ||
-            string.IsNullOrEmpty(request.Password) || string.IsNullOrEmpty(request.Role))
+                string.IsNullOrEmpty(request.Password) || string.IsNullOrEmpty(request.Role))
             {
-                return BadRequest(new { message = "Все поля обязательны для заполнения." });
+                return BadRequest(new { Message = "Все поля обязательны для заполнения." });
             }
 
             if (!Enum.TryParse<UserRole>(request.Role, true, out var userRole))
             {
-                return BadRequest(new { message = "Некорректная роль пользователя." });
+                return BadRequest(new { Message = "Некорректная роль пользователя." });
             }
 
-            await _userCommands.RegisterUserAsync(request.Name, request.Email, request.Password, userRole);
+            var command = new RegisterUserCommand(request.Name, request.Email, request.Password, userRole);
+            await _mediator.Send(command);
 
-            return Ok(new { message = "Пользователь успешно зарегистрирован." });
+            return Ok(new { Message = "Пользователь успешно зарегистрирован." });
         }
-
 
         [HttpPost("login")]
         [AllowAnonymous]
         public async Task<IActionResult> Login([FromBody] LoginRequest request)
         {
-            var token = await _userCommands.LoginAsync(request.Email, request.Password);
+            var command = new LoginCommand(request.Email, request.Password);
+            var token = await _mediator.Send(command);
+
             return Ok(new { Token = token });
         }
 
@@ -54,7 +54,9 @@ namespace Shop.API.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetAllUsers()
         {
-            var users = await _userQueries.GetAllUsersAsync();
+            var query = new GetAllUsersQuery();
+            var users = await _mediator.Send(query);
+
             return Ok(users);
         }
 
@@ -70,13 +72,27 @@ namespace Shop.API.Controllers
             if (id.ToString() != currentUserId && !User.IsInRole("Admin"))
                 return Forbid("Недостаточно прав для доступа к данным другого пользователя.");
 
-            var user = await _userQueries.GetUserByIdAsync(id);
+            var query = new GetUserByIdQuery(id);
+            var user = await _mediator.Send(query);
+
             if (user == null)
                 return NotFound(new { Message = "Пользователь не найден." });
 
             return Ok(user);
         }
 
+        [HttpGet("email/{email}")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> GetUserByEmail(string email)
+        {
+            var query = new GetUserByEmailQuery(email);
+            var user = await _mediator.Send(query);
+
+            if (user == null)
+                return NotFound(new { Message = "Пользователь не найден." });
+
+            return Ok(user);
+        }
 
         [HttpPut("{id}")]
         [Authorize]
@@ -99,12 +115,11 @@ namespace Shop.API.Controllers
                 return BadRequest(new { Message = "Некорректная роль пользователя." });
             }
 
-            await _userCommands.UpdateUserAsync(id, request.Name, request.Email, request.Password, request.Role);
+            var command = new UpdateUserCommand(id, request.Name, request.Email, request.Password, request.Role);
+            await _mediator.Send(command);
 
             return Ok(new { Message = "Данные пользователя успешно обновлены." });
         }
-
-
 
         [HttpDelete("{id}")]
         [Authorize]
@@ -118,7 +133,9 @@ namespace Shop.API.Controllers
             if (id.ToString() != currentUserId && !User.IsInRole("Admin"))
                 return Forbid("Недостаточно прав для удаления другого пользователя.");
 
-            await _userCommands.DeleteUserAsync(id);
+            var command = new DeleteUserCommand(id);
+            await _mediator.Send(command);
+
             return Ok(new { Message = "Пользователь успешно удален." });
         }
 
@@ -128,12 +145,10 @@ namespace Shop.API.Controllers
         {
             try
             {
-                await _userCommands.ActivateUserAsync(id);
+                var command = new ActivateUserCommand(id);
+                await _mediator.Send(command);
 
-
-                await _productRepository.ShowProductsByPublisherAsync(id);
-
-                return Ok(new { Message = $"Пользователь с ID {id} успешно активирован, а его продукты отображены." });
+                return Ok(new { Message = $"Пользователь с ID {id} успешно активирован." });
             }
             catch (KeyNotFoundException)
             {
@@ -146,18 +161,16 @@ namespace Shop.API.Controllers
             }
         }
 
-
         [HttpPost("{id}/deactivate")]
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeactivateUser(Guid id)
         {
             try
             {
-                await _userCommands.DeactivateUserAsync(id);
+                var command = new DeactivateUserCommand(id);
+                await _mediator.Send(command);
 
-                await _productRepository.HideProductsByPublisherAsync(id);
-
-                return Ok(new { Message = $"Пользователь с ID {id} успешно деактивирован, а его продукты скрыты." });
+                return Ok(new { Message = $"Пользователь с ID {id} успешно деактивирован." });
             }
             catch (KeyNotFoundException)
             {
@@ -169,6 +182,5 @@ namespace Shop.API.Controllers
                 return StatusCode(500, new { Message = $"Произошла ошибка при деактивации пользователя с ID {id}.", Details = ex.Message });
             }
         }
-
     }
 }
